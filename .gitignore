@@ -1,0 +1,13 @@
+#Aquivos compilados pelo sourcetree.
+Binaries/
+#Gerado em novas maquinas se deixar.
+Intermediate/
+Saved/
+Content/StarterContent/
+
+*.sln
+*.sdf
+*.opensdf
+*.suo
+*.db
+*.opendb
