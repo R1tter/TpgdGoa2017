@@ -18,6 +18,9 @@ ACharacterExemplo::ACharacterExemplo()
 		(TEXT("Camera"));
 	Camera->SetupAttachment(CameraBoom);
 
+
+	GetCharacterMovement()->GetNavAgentPropertiesRef().bCanCrouch = true;
+
 }
 
 // Called when the game starts or when spawned
@@ -43,7 +46,9 @@ void ACharacterExemplo::SetupPlayerInputComponent(class UInputComponent* InputCo
 	InputComponent->BindAxis("Side", this, &ACharacterExemplo::MoveSides);
 	InputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	InputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
-	InputComponent->BindAction("Crouch", IE_Pressed, this, &ACharacter::Crouch);
+	InputComponent->BindAction("Crouch", IE_Pressed, this, &ACharacterExemplo::ToggleCrouch);
+
+	
 	
 
 }
@@ -57,5 +62,16 @@ void ACharacterExemplo::Move(float Value) {
 void ACharacterExemplo::MoveSides(float Value) {
 	FVector Side(0.0f, 1.0f, 0.0f); //X -Y -Z
 	AddMovementInput(Side, Value);
+}
+void ACharacterExemplo::ToggleCrouch() {
+	if (CanCrouch() == true)
+	{
+		Crouch();
+	}
+	else
+	{
+		UnCrouch();
+
+	}
 }
 

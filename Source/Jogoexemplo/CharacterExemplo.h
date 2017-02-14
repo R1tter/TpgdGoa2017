@@ -38,5 +38,7 @@ private:
 
 	void MoveSides(float Value);
 
+	void ToggleCrouch();
+
 	
 };
